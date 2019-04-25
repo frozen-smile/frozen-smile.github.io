@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>延安-红色筑梦</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/index.css"/>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+			<nav id="nav">
+				<div class="nav_item">视频</div>
+				<div class="nav_item">电子画册</div>
+				<div class="nav_item">官网</div>
+				<div class="nav_item">微信公众号</div>
+			</nav>
+			
+			
+			<div id="content">
+				<div id="video" class="con_item">
+					<div class="head">
+						<img class="logo" src="img/logo_1.png"/>						
+					</div>
+					<div class="video_inner">
+						<p class="video_msg">观看相关视频，了解更多信息</p>
+						<div class="video_item">
+							<video controls="controls">
+								<source src="img/gxq.mp4" type="video/mp4"></source>							
+							</video>
+							<p class="video_title">《2018延安高新宣传片》</p>
+						</div>
+						<div class="video_item">
+							<video controls="controls">
+								<source src="img/fendou.mp4" type="video/mp4"></source>							
+							</video>
+							<p class="video_title">《新时代是奋斗者的时代》</p>
+						</div>
+						<div class="video_item">
+							<video controls="controls">
+								<source src="img/dream.mp4" type="video/mp4"></source>							
+							</video>
+							<p class="video_title">《2018红色筑梦创业延安》</p>
+						</div>
+						<!--<div class="video_item" style="margin-bottom: 0;">
+							<video controls="controls">
+								<source src="img/base.mp4" type="video/mp4"></source>							
+							</video>
+							<p class="video_title">《延安红色筑梦科技孵化基地》</p>
+						</div>-->
+					</div>
+				</div>
+				
+				<div id="album" class="con_item">		
+					<ul class="album_menu">
+						<li><span>高新区画册</span></li>
+						<li><span>高新区宣传页</span></li>
+						<li data-href="dream.html"><span>孵化基地宣传页</span></li>
+					</ul>
+					<div class="mask"></div>
+					<iframe src="dream.html" width="100%" height="100%"></iframe>				
+				</div>
+				
+				
+				
+				<div id="office" class="con_item">
+					<iframe src="http://gxq.yanan.gov.cn/" width="100%" height="100%"></iframe>
+				</div>
+				<div id="weixin" class="con_item">
+					<div class="head">
+						<img class="logo" src="img/logo_1.png"/>
+						<!--<span class="page_title">科技孵化基地</span>-->
+						<p>关注官方微信公众号，了解更多信息</p>
+					</div>
+					<div>
+						<img src="./img/gxq.jpg" alt="" />
+						<p>延安高新区官方公众号</p>
+					</div>
+					<div>
+						<img src="./img/dream.jpg" alt="" />
+						<p>红色筑梦基地官方公众号</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="./js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./js/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$('.nav_item').click(function(){
+			$('.nav_item').removeClass('active')
+			$(this).addClass('active')
+			var idx = $(this).index()			
+			$('.con_item').hide()
+			$('.con_item').eq(idx).show()		
+			if (idx==1) {
+				$('.album_menu').show(500);
+				$('.mask').show(500);
+			}else{
+				$('.album_menu').hide();
+				$('.mask').hide();
+			}
+		})
+		
+		$('.album_menu li').click(function(){
+			var href = $(this).attr('data-href');
+			console.log(href)
+			if (!href) {
+				alert('还没有添加')
+				return
+			}
+			$('#album iframe').prop('src',href)
+			$('.album_menu').hide(500);
+			$('.mask').hide(500);
+		})
+		
+		$('.nav_item').eq(0).trigger('click')
+		
+		
+		
+		
+	</script>
+</html>
